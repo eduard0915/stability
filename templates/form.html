@@ -1,0 +1,79 @@
+{% extends 'body.html' %}
+{% load static %}
+
+{% block head %}
+    <script src="{% static 'lib/materialkitpro/js/jquery-3.1.1.min.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+    <div class="col-md-12">
+        <div class="card">
+            <form enctype="multipart/form-data" class="form-horizontal" action="" method="post">
+                {% block card_header %}
+
+                {% endblock %}
+                <div class="card-content">
+                    {% csrf_token %}
+                    <h4 class="card-title" style="font-weight: bold">{{ entity }}</h4>
+                    <input type="hidden" name="action" value="{{ action }}">
+                    {% for field in form.visible_fields %}
+                        {% if forloop.first %}
+                            <div class="row">
+                        {% endif %}
+                    <div class="col-md-4">
+                        <div class=" form-group label-floating">
+                            <label class="control-label" for=id_{{ field.name }}">{{ field.label }}</label>
+                                {{ field }}
+                            {% if field.help_text %}
+                                <span class="help-block">{{ field.help_text }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                        {% if forloop.last %}
+                            </div>
+                        {% elif forloop.counter|divisibleby:3 %}
+                            </div>
+                            <div class="row">
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="card-footer text-center">
+                    <button type="submit" class="btn btn-success">
+                        <i class="material-icons">check</i>
+                        Guardar
+                    </button>
+                    <a href="{{ list_url }}" class="btn btn-danger btn-fill">
+                        <i class="material-icons">close</i>
+                        Cancelar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $('form').on('submit', function(e){
+            e.preventDefault();
+            var parameters = new FormData(this);
+            $.ajax({
+                url: window.location.pathname,
+                type: 'POST',
+                data: parameters,
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+            }).done(function (data) {
+                console.log(data);
+                if (!data.hasOwnProperty('error')) {
+                    location.href = '{{ list_url }}';
+                    return false;
+                }
+                message_error(data.error);
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                alert(textStatus + ': ' + errorThrown);
+            }).always(function (data) {
+            });
+        });
+    </script>
+{% endblock %}

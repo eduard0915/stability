@@ -1,0 +1,71 @@
+{% load static %}
+
+<div class="sidebar" data-active-color="rose" data-background-color="black"
+     data-image="{% static 'lib/materialkitpro/img/sidebar-1.jpg' %}">
+    <!--
+        Tip 1: You can change the color of active element of the sidebar using: data-active-color="purple | blue | green | orange | red | rose"
+        Tip 2: you can also add an image using data-image tag
+        Tip 3: you can change the color of the sidebar with data-background-color="white | black" -->
+    <div class="logo">
+        <img src="{% static 'lib/materialkitpro/img/logo_bpm_pro_white.png' %}" style="max-width: 90%;max-height: 90%;width:auto;height:auto" alt="bpm_pro"/>
+    </div>
+    <div class="logo logo-mini">
+        <a href="http://www.creative-tim.com">
+            <img src="{% static 'lib/materialkitpro/img/favicon.png' %}" style="max-width: 80%;max-height: 80%;width:auto;height:auto" alt="bpm_pro"/>
+        </a>
+    </div>
+    <div class="sidebar-wrapper">
+        <div class="user">
+            <div class="photo">
+                <img src="{% static 'lib/materialkitpro/img/default-avatar.png' %}" alt="logo"/>
+            </div>
+            <div class="info">
+                <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                    {{ request.user.get_full_name }}
+                    <b class="caret"></b>
+                </a>
+                <div class="collapse" id="collapseExample">
+                    <ul class="nav">
+                        <li>
+                            <a href="#">My Profile</a>
+                        </li>
+                        <li>
+                            <a href="#">Edit Profile</a>
+                        </li>
+                        <li>
+                            <a href="#">Settings</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <ul class="nav">
+            {% url 'user:user_list' as user_list %}
+            {% url 'user:user_create' as user_create %}
+            <li>
+                <a href="{% url 'inicio:inicio' %}">
+                    <i class="material-icons">home</i>
+                    <p>Inicio</p>
+                </a>
+            </li>
+            <li class="{% if user_list in request.path or user_create in request.path %} active{% endif %}">
+                <a data-toggle="collapse" href="#tablesExamples" aria-expanded="true">
+                    <i class="material-icons">manage_accounts</i>
+                    <p>Gestión de Usuarios
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="{% if user_list in request.path %} collapse in {% endif %}" id="tablesExamples">
+                    <ul class="nav">
+                        <li class="{% if user_list in request.path %} active {% endif %}">
+                            <a href="{% url 'user:user_list' %}">Lista de Usuarios</a>
+                        </li>
+                        <li class="{% if user_create in request.path %} active {% endif %}">
+                            <a href="{% url 'user:user_create' %}">Crear Usuario</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
