@@ -48,14 +48,14 @@
                     <p>Inicio</p>
                 </a>
             </li>
-            <li class="{% if user_list in request.path or user_create in request.path %} active{% endif %}">
-                <a data-toggle="collapse" href="#tablesExamples" aria-expanded="true">
+            <li class="{% if user_list in request.path or user_create in request.path %} active {% endif %}">
+                <a data-toggle="collapse" href="#users" aria-expanded="true">
                     <i class="material-icons">manage_accounts</i>
                     <p>Gestión de Usuarios
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="{% if user_list in request.path %} collapse in {% endif %}" id="tablesExamples">
+                <div class="{% if user_list in request.path or user_create in request.path %} collapse in {% else %} collapse {% endif %}" id="users">
                     <ul class="nav">
                         <li class="{% if user_list in request.path %} active {% endif %}">
                             <a href="{% url 'user:user_list' %}">Lista de Usuarios</a>

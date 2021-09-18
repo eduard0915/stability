@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import CreateView, ListView, UpdateView
+from django.views.generic import CreateView, ListView, UpdateView, DetailView
 
 from core.user.forms import UserForm, UserUpdateForm
 from core.user.models import User
@@ -133,4 +133,24 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         context['list_url'] = reverse_lazy('user:user_list')
         context['entity'] = 'Editar Usuario'
         context['action'] = 'edit'
+        return context
+
+
+# Detalle de Usuario
+class UserDetailView(LoginRequiredMixin, DetailView):
+    model = User
+    template_name = 'detail.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+        return super(UserDetailView, self).get_queryset()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Perfil de Usuario'
+        context['entity'] = 'Perfil de Usuario'
+        context['list_url'] = reverse_lazy('user:user_list')
+        # context['create_url'] = reverse_lazy('user:user_update')
         return context
