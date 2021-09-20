@@ -18,9 +18,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from config import settings as setting, settings
+from core.home.views import HomeView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("", HomeView.as_view(), name='home'),
     path('user/', include('core.user.urls')),
     path('inicio/', include('core.inicio.urls')),
     path('login/', include('core.login.urls')),

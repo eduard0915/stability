@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'core.user',
     'core.inicio',
     'core.login',
+    'core.home',
     # Libs
     'widget_tweaks',
 ]
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'crum.CurrentRequestUserMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
