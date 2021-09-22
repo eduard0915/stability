@@ -12,7 +12,7 @@ class User(AbstractUser):
     cellphone = models.CharField(max_length=10, null=True, blank=True, verbose_name='N° Celular')
     address_user = models.CharField(max_length=50, null=True, blank=True, verbose_name='Dirección')
     date_birth = models.DateField(null=True, blank=True, verbose_name='Fecha de Nacimiento')
-    photo = models.FileField(upload_to='user/%Y%m%d', null=True, blank=True, verbose_name='Foto')
+    photo = models.ImageField(upload_to='user/%Y%m%d', null=True, blank=True, verbose_name='Foto')
 
     def __str__(self):
         return f'{self.get_full_name()}, {self.cargo}'

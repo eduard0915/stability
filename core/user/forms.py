@@ -65,7 +65,7 @@ class UserUpdateForm(ModelForm):
 
     class Meta:
         model = User
-        fields = 'first_name', 'last_name', 'email', 'cargo', 'cellphone', 'cedula', 'username', 'password', 'groups', 'is_active'
+        fields = 'first_name', 'last_name', 'email', 'cargo', 'cellphone', 'cedula', 'username', 'password', 'groups', 'is_active', 'photo'
         widgets = {
             'password': PasswordInput(render_value=True, attrs={'class': 'form-control'}),
             'first_name': TextInput(attrs={'class': 'form-control', 'required': True}),
@@ -76,7 +76,8 @@ class UserUpdateForm(ModelForm):
             'cedula': TextInput(attrs={'class': 'form-control'}),
             'username': TextInput(attrs={'class': 'form-control'}),
             'groups': SelectMultiple(attrs={'class': 'form-control', 'required': True}),
-            'is_active': CheckboxInput(attrs={'class': 'checkbox'})
+            'is_active': CheckboxInput(attrs={'class': 'checkbox'}),
+            'photo': FileInput(attrs={'class': 'form-control-file'})
 
         }
         exclude = ['user_permissions', 'last_login', 'date_joined', 'is_superuser', 'is_staff']

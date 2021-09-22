@@ -55,7 +55,7 @@ $(function ()  {
                 class: 'td-actions text-center',
                 render: function (data, type, row) {
                     var html = '';
-                        html+='<span class="btn btn-success btn-xs btn-round">'+row.groups__name+'</span>'
+                        html+='<span style="font-weight: bold">'+row.groups__name+'</span>'
                     return html
                 }
             },

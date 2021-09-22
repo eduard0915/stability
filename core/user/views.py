@@ -1,14 +1,11 @@
 from django.contrib import messages
-# from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView, ListView, UpdateView, DetailView
 
-from config.settings import MEDIA_URL, STATIC_URL
 from core.user.forms import UserForm, UserUpdateForm
 from core.user.models import User
 
@@ -149,19 +146,9 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     def get_queryset(self):
         return super(UserDetailView, self).get_queryset()
 
-    # def photo_user(self):
-    #     try:
-    #         return User.objects.get(id=self.kwargs['id'])
-    #     except ObjectDoesNotExist :
-    #         return '{}{}'.format (STATIC_URL, 'img/empty.png')
-        # if self.photo:
-        #     return '{}{}'.format(MEDIA_URL, self.photo)
-        # return '{}{}'.format(STATIC_URL, 'img/default-avatar.png')
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Perfil de Usuario'
         context['entity'] = 'Perfil de Usuario'
         context['list_url'] = reverse_lazy('user:user_list')
-        # context['photo'] = self.photo_user()
         return context

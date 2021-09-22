@@ -75,8 +75,11 @@
         <div class="card card-profile">
             <div class="card-avatar">
                 <a href="#">
-{#                    <img class="img" src="{{ object.user.photo.url }}" alt="bpmpro_user"/>#}
-                    <img class="img" src="{% static 'lib/materialkitpro/img/default-avatar.png' %}" alt="bpmpro_user"/>
+                    {% if user.photo %}
+                        <img class="img" src="{{ user.photo.url }}" alt="bpmpro_user"/>
+                    {% else %}
+                        <img class="img" src="{% static 'lib/materialkitpro/img/default-avatar.png' %}" alt="bpmpro_user"/>
+                    {% endif %}
                 </a>
             </div>
             <div class="card-content">
