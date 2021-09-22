@@ -63,7 +63,7 @@
                                 {% if object.last_login == None %}
                                     Sin Registro de Ingreso
                                 {% else %}
-                                    {{ object.last_login }}
+                                    {{ object.last_login | date:'Y-m-d H:m'}}
                                 {% endif %}
                             </div>
                         </div>

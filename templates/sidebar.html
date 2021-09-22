@@ -17,7 +17,11 @@
     <div class="sidebar-wrapper">
         <div class="user">
             <div class="photo">
-                <img src="{% static 'lib/materialkitpro/img/default-avatar.png' %}" alt="logo"/>
+                {% if request.user.photo %}
+                    <img src="{{ request.user.photo.url }}" alt="logo"/>
+                 {% else %}
+                    <img src="{% static 'lib/materialkitpro/img/default-avatar.png' %}" alt="logo"/>
+                {% endif %}
             </div>
             <div class="info">
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
