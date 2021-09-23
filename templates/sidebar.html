@@ -31,13 +31,10 @@
                 <div class="collapse" id="collapseExample">
                     <ul class="nav">
                         <li>
-                            <a href="#">My Profile</a>
+                            <a href="{% url 'user:user_profile' request.user.id %}">Mi Perfil - {{ request.user.username }}</a>
                         </li>
                         <li>
-                            <a href="#">Edit Profile</a>
-                        </li>
-                        <li>
-                            <a href="#">Settings</a>
+                            <a href="{% url 'logout' %}">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>

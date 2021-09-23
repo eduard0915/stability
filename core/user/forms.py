@@ -22,7 +22,7 @@ class UserForm(ModelForm):
             'cellphone': TextInput(attrs={'class': 'form-control'}),
             'cedula': TextInput(attrs={'class': 'form-control'}),
             'username': TextInput(attrs={'class': 'form-control'}),
-            'groups': Select(attrs={'class': 'form-control', 'required': True})
+            'groups': SelectMultiple(attrs={'class': 'form-control', 'required': True})
             #'groups': CheckboxSelectMultiple(attrs={'required': True, })
         }
         exclude = ['user_permissions', 'last_login', 'date_joined', 'is_superuser', 'is_staff', 'is_active']
@@ -67,17 +67,17 @@ class UserUpdateForm(ModelForm):
         model = User
         fields = 'first_name', 'last_name', 'email', 'cargo', 'cellphone', 'cedula', 'username', 'password', 'groups', 'is_active', 'photo'
         widgets = {
-            'password': PasswordInput(render_value=True, attrs={'class': 'form-control'}),
+            'password': PasswordInput(render_value=True, attrs={'class': 'form-control', 'min_length': 6}),
             'first_name': TextInput(attrs={'class': 'form-control', 'required': True}),
             'last_name': TextInput(attrs={'class': 'form-control', 'required': True}),
             'email': EmailInput(attrs={'class': 'form-control', 'required': True}),
             'cargo': TextInput(attrs={'class': 'form-control'}),
             'cellphone': TextInput(attrs={'class': 'form-control'}),
             'cedula': TextInput(attrs={'class': 'form-control'}),
-            'username': TextInput(attrs={'class': 'form-control'}),
+            'username': TextInput(attrs={'class': 'form-control', 'readonly': True}),
+            'is_active' : CheckboxInput(),
             'groups': SelectMultiple(attrs={'class': 'form-control', 'required': True}),
-            'is_active': CheckboxInput(attrs={'class': 'checkbox'}),
-            'photo': FileInput(attrs={'class': 'form-control-file'})
+            'photo': FileInput()
 
         }
         exclude = ['user_permissions', 'last_login', 'date_joined', 'is_superuser', 'is_staff']

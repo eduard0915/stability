@@ -9,7 +9,7 @@ from django.views.generic import CreateView, ListView, UpdateView, DetailView
 from core.user.forms import UserForm, UserUpdateForm
 from core.user.models import User
 
-
+# Creacion de usuario
 class UserCreateView(LoginRequiredMixin, CreateView):
     model = User
     form_class = UserForm
@@ -49,7 +49,7 @@ class UserCreateView(LoginRequiredMixin, CreateView):
         context['entity'] = 'Creación Usuario'
         return context
 
-
+# Listado de usuarios
 class UserListView(LoginRequiredMixin, ListView):
     model = User
     template_name = 'list_user.html'
@@ -93,7 +93,7 @@ class UserListView(LoginRequiredMixin, ListView):
         context['entity'] = 'Usuarios'
         return context
 
-
+# Edicion de usuario por Administrador
 class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserUpdateForm
@@ -151,4 +151,22 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         context['title'] = 'Perfil de Usuario'
         context['entity'] = 'Perfil de Usuario'
         context['list_url'] = reverse_lazy('user:user_list')
+        return context
+
+# Detalle de usuario logueado
+class MyProfileDetailView(LoginRequiredMixin, DetailView):
+    model = User
+    template_name = 'detail.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+        return super(MyProfileDetailView, self).get_queryset()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Mi Perfil'
+        context['entity'] = 'Mi Perfil'
+        context['list_url'] = reverse_lazy('inicio:inicio')
         return context
