@@ -32,7 +32,7 @@ $(function ()  {
                 orderable: false,
                 render: function (data, type, row) {
                     let edition
-                    edition = '<a href="/user/update/'+row.id+'/" type="button" rel="tooltip" class="btn btn-warning btn-xs btn-just-icon btn-simple"><i class="material-icons">edit</i</a>';
+                    edition = '<a href="/user/update-password/'+row.id+'/" type="button" rel="tooltip" class="btn btn-info btn-xs btn-just-icon btn-simple"><i class="material-icons">lock</i</a>';
                     return edition;
                 }
             },

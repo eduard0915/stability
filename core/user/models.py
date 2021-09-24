@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.forms import model_to_dict
+# from django.forms import model_to_dict
 
 from config.settings import MEDIA_URL, STATIC_URL
 
@@ -22,11 +22,11 @@ class User(AbstractUser):
             return '{}{}'.format(MEDIA_URL, self.photo)
         return '{}{}'.format(STATIC_URL, 'img/default-avatar.png')
 
-    def tojson(self):
-        item = model_to_dict(self, exclude=['password', 'user_permissions'])
-        if self.last_login:
-            item['last_login'] = self.last_login.strftime('%Y-%m-%d %H:%M')
-        item['date_joined'] = self.date_joined.strftime('%Y-%m-%d')
-        item['full_name'] = self.get_full_name()
-        item['groups'] = [{'id': g.id, 'name': g.name} for g in self.groups.all()]
-        return item
+    # def tojson(self):
+    #     item = model_to_dict(self, exclude=['password', 'user_permissions'])
+    #     if self.last_login:
+    #         item['last_login'] = self.last_login.strftime('%Y-%m-%d %H:%M')
+    #     item['date_joined'] = self.date_joined.strftime('%Y-%m-%d')
+    #     item['full_name'] = self.get_full_name()
+    #     item['groups'] = [{'id': g.id, 'name': g.name} for g in self.groups.all()]
+    #     return item

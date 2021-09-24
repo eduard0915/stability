@@ -88,7 +88,7 @@
             <div class="card-content">
                 <h6 class="category text-gray">{{ object.cargo }}</h6>
                 <h4 class="card-title">{{ object.get_full_name }}</h4>
-                <a href="{% url 'user:user_update' object.id %}" class="btn btn-rose btn-round">Editar</a>
+                <a href="{% url 'user:user_profile_update' object.id %}" class="btn btn-rose btn-round">Editar</a>
             </div>
         </div>
     </div>

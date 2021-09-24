@@ -4,6 +4,10 @@
     <div class="card-header card-header-icon" data-background-color="rose">
         {% if action == 'add' %}
             <i class="material-icons">person_add</i>
+        {% elif entity == 'Editar Perfil' %}
+            <i class="material-icons">person</i>
+        {% elif entity == 'Reseteo de Contraseña de Usuario' or 'Cambiar Contraseña' %}
+            <i class="material-icons">lock</i>
         {% else %}
             <i class="material-icons">edit</i>
         {% endif %}
