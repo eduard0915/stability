@@ -195,8 +195,7 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
                 form = self.get_form()
                 if form.is_valid():
                     data = form.save()
-                    name_username = form.cleaned_data.get('get_fullname')
-                    messages.success(request, f'"{name_username}" su perfil lo ha actualizado satisfactoriamente!')
+                    messages.success(request, f'Su perfil ha sido actualizado satisfactoriamente!')
                 else:
                     messages.error(request, form.errors)
             else:

@@ -12,7 +12,14 @@ class UserForm(ModelForm):
 
     class Meta:
         model = User
-        fields = 'first_name', 'last_name', 'email', 'cargo', 'cellphone', 'cedula', 'username', 'password', 'groups', 'is_active'
+        fields = [
+            'first_name',
+            'last_name', 'email',
+            'cargo', 'cellphone',
+            'cedula', 'username',
+            'password', 'groups',
+            'is_active'
+        ]
         widgets = {
             'password': PasswordInput(render_value=True, attrs={'class': 'form-control'}),
             'first_name': TextInput(attrs={'class': 'form-control', 'required': True}),
@@ -26,13 +33,13 @@ class UserForm(ModelForm):
         }
         exclude = ['user_permissions', 'last_login', 'date_joined', 'is_superuser', 'is_staff', 'is_active']
         help_texts = {
-            'groups' : 'Seleccione perfil del usuario',
+            'groups': 'Seleccione perfil del usuario',
             'is_active': 'Indica si el usuario está habilitado',
             'username': 'Únicamente letras y/o números'
         }
 
     def save(self, commit=True):
-        data ={}
+        data = {}
         form = super()
         try:
             if form.is_valid():
@@ -43,7 +50,7 @@ class UserForm(ModelForm):
                 else:
                     user = User.objects.get(pk=u.pk)
                     if user.password != pwd:
-                        u.set_password (pwd)
+                        u.set_password(pwd)
                 u.save()
                 u.groups.clear()
                 for g in self.cleaned_data['groups']:
@@ -64,9 +71,16 @@ class UserUpdateForm(ModelForm):
 
     class Meta:
         model = User
-        fields = 'first_name', 'last_name', 'email', 'cargo', 'cellphone', 'cedula', 'username', 'groups', 'is_active', 'photo'
+        fields = [
+            'first_name',
+            'last_name', 'email',
+            'cargo', 'cellphone',
+            'cedula', 'username',
+            'groups',
+            'is_active',
+            'photo'
+        ]
         widgets = {
-            #'password': PasswordInput(render_value=True, attrs={'class': 'form-control', 'min_length': 6}),
             'first_name': TextInput(attrs={'class': 'form-control', 'required': True}),
             'last_name': TextInput(attrs={'class': 'form-control', 'required': True}),
             'email': EmailInput(attrs={'class': 'form-control', 'required': True}),
@@ -74,7 +88,7 @@ class UserUpdateForm(ModelForm):
             'cellphone': TextInput(attrs={'class': 'form-control'}),
             'cedula': TextInput(attrs={'class': 'form-control'}),
             'username': TextInput(attrs={'class': 'form-control', 'readonly': True}),
-            'is_active' : CheckboxInput(),
+            'is_active': CheckboxInput(),
             'groups': SelectMultiple(attrs={'class': 'form-control', 'required': True}),
             'photo': FileInput()
 
@@ -82,13 +96,13 @@ class UserUpdateForm(ModelForm):
         exclude = ['user_permissions', 'last_login', 'date_joined', 'is_superuser', 'is_staff']
 
         help_texts = {
-            'groups' : 'Seleccione perfil del usuario',
+            'groups': 'Seleccione perfil del usuario',
             'is_active': 'Indica si el usuario está habilitado',
             'username': 'Únicamente letras y/o números'
         }
 
     def save(self, commit=True):
-        data ={}
+        data = {}
         form = super()
         try:
             if form.is_valid():
@@ -99,7 +113,7 @@ class UserUpdateForm(ModelForm):
                 else:
                     user = User.objects.get(pk=u.pk)
                     if user.password != pwd:
-                        u.set_password (pwd)
+                        u.set_password(pwd)
                 u.save()
                 u.groups.clear()
                 for g in self.cleaned_data['groups']:
@@ -119,7 +133,18 @@ class ProfileUpdateForm(ModelForm):
 
     class Meta:
         model = User
-        fields = 'first_name', 'last_name', 'email', 'cargo', 'cellphone', 'cedula', 'email_person', 'address_user', 'date_birth', 'photo'
+        fields = [
+            'first_name',
+            'last_name',
+            'email',
+            'cargo',
+            'cellphone',
+            'cedula',
+            'email_person',
+            'address_user',
+            'date_birth',
+            'photo'
+        ]
         widgets = {
             'first_name': TextInput(attrs={'class': 'form-control', 'required': True}),
             'last_name': TextInput(attrs={'class': 'form-control', 'required': True}),
@@ -129,13 +154,23 @@ class ProfileUpdateForm(ModelForm):
             'cellphone': TextInput(attrs={'class': 'form-control'}),
             'date_birth': DateInput(format='%Y-%m-%d', attrs={
                 'id': 'date_birth',
-                'class': 'form-control datetimepicker'}),
+                'class': 'form-control datepicker'}),
             'cedula': TextInput(attrs={'class': 'form-control'}),
             'address_user': TextInput(attrs={'class': 'form-control'}),
             'photo': FileInput()
 
         }
-        exclude = ['user_permissions', 'last_login', 'date_joined', 'is_superuser', 'is_staff', 'groups', 'is_active', 'username', 'password']
+        exclude = [
+            'user_permissions',
+            'last_login',
+            'date_joined',
+            'is_superuser',
+            'is_staff',
+            'groups',
+            'is_active',
+            'username',
+            'password'
+        ]
 
     def save(self, commit=True):
         data = {}
@@ -163,11 +198,11 @@ class UserPasswordUpdateForm(ModelForm):
             'password': PasswordInput(render_value=False, attrs={'class': 'form-control'}),
         }
         help_texts = {
-            'password' : 'Reseteo de contraseña de usuario'
+            'password': 'Reseteo de contraseña de usuario'
         }
 
     def save(self, commit=True):
-        data ={}
+        data = {}
         form = super()
         try:
             if form.is_valid():
@@ -178,7 +213,7 @@ class UserPasswordUpdateForm(ModelForm):
                 else:
                     user = User.objects.get(pk=u.pk)
                     if user.password != pwd:
-                        u.set_password (pwd)
+                        u.set_password(pwd)
                 u.save()
             else:
                 data['error'] = form.errors

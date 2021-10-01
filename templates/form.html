@@ -5,6 +5,7 @@
     <script src="{% static 'lib/materialkitpro/js/jquery-3.1.1.min.js' %}"></script>
     <script src="{% static 'lib/materialkitpro/js/material.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'lib/materialkitpro/js/moment.min.js' %}"></script>
+    <script src="{% static 'lib/moment-es/es.js' %}"></script>
     <script src="{% static 'lib/materialkitpro/js/bootstrap-datetimepicker.js' %}"></script>
 {% endblock %}
 
@@ -26,7 +27,8 @@
                         {% endif %}
                     <div class="col-md-4">
                         <div {% if field.name == 'is_active' %} class="checkbox"
-                                {% elif field.name == 'photo' %} class="fileinput fileinput-new text-center" data-provides='fileinput'
+                            {% elif field.name == 'photo' %} class="fileinput fileinput-new text-center" data-provides='fileinput'
+                            {% elif field.name == 'date_birth' %} class="form-group"
                             {% else %} class="form-group label-floating" {% endif %}>
                             {% if field.name == 'is_active' %}
                                 <label>
@@ -101,6 +103,7 @@
         });
         $('#date_birth').datetimepicker({
             format: 'L',
+            locale: 'es',
             icons: {
                 time: "fa fa-clock-o",
                 date: "fa fa-calendar",
@@ -111,7 +114,7 @@
                 today: 'fa fa-screenshot',
                 clear: 'fa fa-trash',
                 close: 'fa fa-remove',
-            }
+            },
         });
     </script>
 {% endblock %}
