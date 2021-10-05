@@ -28,7 +28,7 @@
                     <div class="col-md-4">
                         <div {% if field.name == 'is_active' %} class="checkbox"
                             {% elif field.name == 'photo' %} class="fileinput fileinput-new text-center" data-provides='fileinput'
-                            {% elif field.name == 'date_birth' %} class="form-group"
+{#                            {% elif field.name == 'date_birth' %} class="form-group"#}
                             {% else %} class="form-group label-floating" {% endif %}>
                             {% if field.name == 'is_active' %}
                                 <label>
@@ -102,8 +102,9 @@
             });
         });
         $('#date_birth').datetimepicker({
-            format: 'L',
+            format: 'YYYY-MM-DD',
             locale: 'es',
+            defaultDate: $('.date_birth'),
             icons: {
                 time: "fa fa-clock-o",
                 date: "fa fa-calendar",

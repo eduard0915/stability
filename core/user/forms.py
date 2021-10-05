@@ -154,7 +154,8 @@ class ProfileUpdateForm(ModelForm):
             'cellphone': TextInput(attrs={'class': 'form-control'}),
             'date_birth': DateInput(format='%Y-%m-%d', attrs={
                 'id': 'date_birth',
-                'class': 'form-control datepicker'}),
+                'class': 'form-control datepicker'
+            }),
             'cedula': TextInput(attrs={'class': 'form-control'}),
             'address_user': TextInput(attrs={'class': 'form-control'}),
             'photo': FileInput()
