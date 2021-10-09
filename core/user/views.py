@@ -101,7 +101,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
     form_class = UserUpdateForm
     template_name = 'create.html'
     success_url = reverse_lazy('user:user_list')
-    # permission_required = 'user.change_user'
+    permission_required = 'user.change_user'
     url_redirect = success_url
 
     @method_decorator(csrf_exempt)
@@ -134,6 +134,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         context['list_url'] = reverse_lazy('user:user_list')
         context['entity'] = 'Editar Usuario'
         context['action'] = 'edit'
+        context['users'] = User.objects.all()
         return context
 
 # Detalle de Usuario

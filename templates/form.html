@@ -26,9 +26,13 @@
                             <div class="row">
                         {% endif %}
                     <div class="col-md-4">
+                        {% if field.name == 'groups' %}
+                            <select class="selectpicker" data-style="btn btn-rose btn-round" multiple data-size="3" id={{ field }}
+                            </select>
+                            <span class="help-block">{{ field.help_text }}</span>
+                        {% else %}
                         <div {% if field.name == 'is_active' %} class="checkbox"
                             {% elif field.name == 'photo' %} class="fileinput fileinput-new text-center" data-provides='fileinput'
-{#                            {% elif field.name == 'date_birth' %} class="form-group"#}
                             {% else %} class="form-group label-floating" {% endif %}>
                             {% if field.name == 'is_active' %}
                                 <label>
@@ -55,6 +59,7 @@
                                 <span class="help-block">{{ field.help_text }}</span>
                             {% endif %}
                         </div>
+                        {% endif %}
                     </div>
                     {% if forloop.last %}
                         </div>

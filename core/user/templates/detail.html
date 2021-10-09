@@ -67,7 +67,7 @@
                                 {% endif %}
                             </div>
                             <div class="col-md-4">
-                                <a href="{% url 'user:change_password' %}" class="btn btn-rose btn-round">Cambiar Contraseña</a>
+                                <a href="{% url 'user:user_password_update' object.id %}" class="btn btn-rose btn-round">Resetear Contraseña</a>
                             </div>
                         </div>
                 </div>
@@ -88,6 +88,8 @@
             <div class="card-content">
                 <h6 class="category text-gray">{{ object.cargo }}</h6>
                 <h4 class="card-title">{{ object.get_full_name }}</h4>
+                <h4 class="card-title text-success" style="font-weight: bold">{% if object.is_active == True %} Activo {% endif %}</h4>
+                <h4 class="card-title text-danger" style="font-weight: bold">{% if object.is_active == False %} Inactivo {% endif %}</h4>
                 <a href="{% url 'user:user_update' object.id %}" class="btn btn-rose btn-round">Editar</a>
             </div>
         </div>

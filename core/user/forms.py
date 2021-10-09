@@ -89,7 +89,7 @@ class UserUpdateForm(ModelForm):
             'cedula': TextInput(attrs={'class': 'form-control'}),
             'username': TextInput(attrs={'class': 'form-control', 'readonly': True}),
             'is_active': CheckboxInput(),
-            'groups': SelectMultiple(attrs={'class': 'form-control', 'required': True}),
+            'groups': SelectMultiple(attrs={'required': True}),
             'photo': FileInput()
 
         }
@@ -106,18 +106,7 @@ class UserUpdateForm(ModelForm):
         form = super()
         try:
             if form.is_valid():
-                pwd = self.cleaned_data['password']
-                u = form.save(commit=False)
-                if u.pk is None:
-                    u.set_password(pwd)
-                else:
-                    user = User.objects.get(pk=u.pk)
-                    if user.password != pwd:
-                        u.set_password(pwd)
-                u.save()
-                u.groups.clear()
-                for g in self.cleaned_data['groups']:
-                    u.groups.add(g)
+                form.save()
             else:
                 data['error'] = form.errors
         except Exception as e:
