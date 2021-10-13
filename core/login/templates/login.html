@@ -2,7 +2,6 @@
 {% load static %}
 {% load widget_tweaks %}
 
-
 <body>
 {% block content %}
     <div class="container">
@@ -64,7 +63,7 @@
                             <button type="submit" class="btn btn-rose btn-simple btn-wd btn-lg">Iniciar Sesión
                             </button>
                         </div>
-                        <div class="text-center"><a href="#">Olvidé mi Contraseña!</a></div>
+                        <div class="text-center"><a href="{% url 'password_reset' %}">Olvidé mi Contraseña!</a></div>
                     </div>
                 </form>
             </div>
