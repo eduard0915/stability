@@ -11,9 +11,8 @@ class CompanyForms(ModelForm):
 
     class Meta:
         model = Company
-        fields = 'companyName', 'companyNit', 'companyAddress', 'companyLogo', 'companyCity'
+        fields = 'companyName', 'companyNit', 'companyAddress', 'companyCity'
         widgets = {
-            'companyLogo': FileInput(attrs={'class': 'form-control-file'}),
             'companyName': TextInput(attrs={'class': 'form-control', 'required': True}),
             'companyNit': TextInput(attrs={'class': 'form-control', 'required': True}),
             'companyAddress': TextInput(attrs={'class': 'form-control', 'required': True}),

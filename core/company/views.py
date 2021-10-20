@@ -17,7 +17,7 @@ from core.mixins import ValidatePermissionRequiredMixin
 class CompanyCreateView(LoginRequiredMixin, ValidatePermissionRequiredMixin, CreateView):
     model = Company
     form_class = CompanyForms
-    template_name = 'create.html'
+    template_name = 'create_company.html'
     success_url = reverse_lazy('company:company_list')
     permission_required = 'company.add_company'
 
@@ -58,7 +58,7 @@ class CompanyCreateView(LoginRequiredMixin, ValidatePermissionRequiredMixin, Cre
 class CompanyUpdateView(LoginRequiredMixin, ValidatePermissionRequiredMixin, UpdateView):
     model = Company
     form_class = CompanyForms
-    template_name = 'create.html'
+    template_name = 'create_company.html'
     success_url = reverse_lazy('company:company_list')
     permission_required = 'company.change_company'
     url_redirect = success_url
