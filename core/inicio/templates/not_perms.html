@@ -1,0 +1,12 @@
+{% extends 'body.html' %}
+
+{% block not_perms %}
+
+    <div class="alert alert-info alert-with-icon">
+        <i class="material-icons" data-notify="icon" >info_outline</i>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+        <span data-notify="message"> <b>Acceso Denegado:</b> No tiene permisos de acceso, por favor contacte al
+            administrador del sistema en su organización. </span>
+    </div>
+
+{% endblock %}

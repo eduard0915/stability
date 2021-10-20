@@ -33,14 +33,14 @@
                             <span class="help-block">{{ field.help_text }}</span>
                         {% else %}
                         <div {% if field.name == 'is_active' %} class="checkbox"
-                            {% elif field.name == 'photo' %} class="fileinput fileinput-new text-center" data-provides='fileinput'
+                            {% elif field.name == 'photo' or field.name == 'companyLogo' %} class="fileinput fileinput-new text-center" data-provides='fileinput'
                             {% else %} class="form-group label-floating" {% endif %}>
                             {% if field.name == 'is_active' %}
                                 <label>
                                     {{ field }}
                                     {{ field.label }}
                                 </label>
-                            {% elif field.name == 'photo' %}
+                            {% elif field.name == 'photo' or field.name == 'companyLogo' %}
                                 <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                 <div>
                                     <span class="btn btn-rose btn-round btn-file">

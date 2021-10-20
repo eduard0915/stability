@@ -42,9 +42,13 @@
         </div>
 
         <ul class="nav">
+            {% url 'inicio:inicio' as inicio %}
             {% url 'user:user_list' as user_list %}
             {% url 'user:user_create' as user_create %}
-            <li>
+            {% url 'company:company_create' as company_create %}
+            {% url 'company:company_list' as company_list %}
+
+            <li class="{% if inicio in request.path %} active {% endif %}">
                 <a href="{% url 'inicio:inicio' %}">
                     <i class="material-icons">home</i>
                     <p>Inicio</p>
@@ -64,6 +68,29 @@
                         </li>
                         <li class="{% if user_create in request.path %} active {% endif %}">
                             <a href="{% url 'user:user_create' %}">Crear Usuario</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="{% if company_create in request.path %} active {% endif %}">
+                <a data-toggle="collapse" href="#company" aria-expanded="true">
+                    <i class="material-icons">store</i>
+                    <p>Perfil Compañia
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="{% if company_create in request.path or company_list in request.path %} collapse in
+                    {% else %} collapse {% endif %}" id="company">
+                    <ul class="nav">
+                        <li class="{% if company_create in request.path or company_list in request.path %} active {% endif %}">
+                            <a {% if company >= 1 %}
+                                    href="{% url 'company:company_list' %}">
+                                {% else %}
+                                    href="{% url 'company:company_create' %}">
+                                {% endif %}
+                                Configuración
+                            </a>
                         </li>
                     </ul>
                 </div>
