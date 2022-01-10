@@ -5590,11 +5590,14 @@ h2.title {
 }
 .sidebar .user .photo,
 .off-canvas-sidebar .user .photo {
-  width: 80px;
-  height: 80px;
+  width: 35px;
+  height: 35px;
   overflow: hidden;
+  float: left;
+  z-index: 5;
+  margin-right: 11px;
   border-radius: 50%;
-  margin: 0 auto;
+  margin-left: 23px;
   box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
 .sidebar .user .photo img,
@@ -5603,10 +5606,9 @@ h2.title {
 }
 .sidebar .user a,
 .off-canvas-sidebar .user a {
-  text-align: center;
   color: #3C4858;
-  padding: 6px 10px;
-  text-align: center;
+  padding: 6px 15px;
+  text-align: left;
   display: block;
   white-space: nowrap;
 }

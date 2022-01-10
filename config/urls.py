@@ -18,15 +18,16 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from config import settings as setting, settings
-from core.homepage.views import IndexView
-
+from core.home.views import HomeView
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('admin/', admin.site.urls),
+    path("", HomeView.as_view(), name='home'),
     path('user/', include('core.user.urls')),
     path('inicio/', include('core.inicio.urls')),
     path('login/', include('core.login.urls')),
+    path('company/', include('core.company.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if setting.DEBUG:

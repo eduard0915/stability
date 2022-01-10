@@ -5,5 +5,5 @@ app_name = 'inicio'
 
 urlpatterns = [
     path('', InicioView.as_view(), name='inicio'),
-    # path('inicio/sinpermisos/', NotPermsView.as_view(), name='notperms'),
+    path('inicio/notperms/', NotPermsView.as_view(), name='notperms'),
 ]

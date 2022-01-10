@@ -3,6 +3,10 @@
 
 {% block head %}
     <script src="{% static 'lib/materialkitpro/js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'lib/materialkitpro/js/material.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lib/materialkitpro/js/moment.min.js' %}"></script>
+    <script src="{% static 'lib/moment-es/es.js' %}"></script>
+    <script src="{% static 'lib/materialkitpro/js/bootstrap-datetimepicker.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -22,22 +26,50 @@
                             <div class="row">
                         {% endif %}
                     <div class="col-md-4">
-                        <div class=" form-group label-floating">
-                            <label class="control-label" for=id_{{ field.name }}">{{ field.label }}</label>
+                        {% if field.name == 'groups' %}
+                            <label for=""></label>
+                            <select class="selectpicker" data-style="btn btn-rose btn-round" multiple data-size="3" id={{ field }}>
+                            </select>
+                            <span class="help-block">{{ field.help_text }}</span>
+                        {% else %}
+                        <div {% if field.name == 'is_active' %} class="checkbox"
+                            {% elif field.name == 'photo' or field.name == 'companyLogo' %} class="fileinput fileinput-new text-center" data-provides='fileinput'
+                            {% else %} class="form-group label-floating" {% endif %}>
+                            {% if field.name == 'is_active' %}
+                                <label>
+                                    {{ field }}
+                                    {{ field.label }}
+                                </label>
+                            {% elif field.name == 'photo' or field.name == 'companyLogo' %}
+                                <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                <div>
+                                    <span class="btn btn-rose btn-round btn-file">
+                                        <span class="fileinput-new">Selecionar imagen</span>
+                                        <span class="fileinput-exists">Cambiar</span>
+                                        {{ field }}
+                                    </span>
+                                    <a href="#" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Eliminar</a>
+                                </div>
+                            {% else %}
+                                <label class="control-label" for=id_{{ field.name }}">
+                                    {{ field.label }}
+                                </label>
                                 {{ field }}
+                            {% endif %}
                             {% if field.help_text %}
                                 <span class="help-block">{{ field.help_text }}</span>
                             {% endif %}
                         </div>
-                    </div>
-                        {% if forloop.last %}
-                            </div>
-                        {% elif forloop.counter|divisibleby:3 %}
-                            </div>
-                            <div class="row">
                         {% endif %}
+                    </div>
+                    {% if forloop.last %}
+                        </div>
+                    {% elif forloop.counter|divisibleby:3 %}
+                        </div>
+                        <div class="row">
+                    {% endif %}
                     {% endfor %}
-                </div>
+                    </div>
                 <div class="card-footer text-center">
                     <button type="submit" class="btn btn-success">
                         <i class="material-icons">check</i>
@@ -53,7 +85,7 @@
     </div>
 
     <script type="text/javascript">
-        $('form').on('submit', function(e){
+        $('form').on('submit', function (e) {
             e.preventDefault();
             var parameters = new FormData(this);
             $.ajax({
@@ -74,6 +106,22 @@
                 alert(textStatus + ': ' + errorThrown);
             }).always(function (data) {
             });
+        });
+        $('#date_birth').datetimepicker({
+            format: 'YYYY-MM-DD',
+            locale: 'es',
+            defaultDate: $('.date_birth'),
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-chevron-up",
+                down: "fa fa-chevron-down",
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-screenshot',
+                clear: 'fa fa-trash',
+                close: 'fa fa-remove',
+            },
         });
     </script>
 {% endblock %}

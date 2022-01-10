@@ -1,0 +1,114 @@
+{% extends 'body.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block head %}
+    <script src="{% static 'lib/materialkitpro/js/jquery-3.1.1.min.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">assignment_ind</i>
+            </div>
+            <div class="card-content">
+                <h4 class="card-title" style="font-weight: bold">{{ entity }} - {{ object.username }}</h4>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p class="card-text"><strong>N° Identificación:</strong></p>{{ object.cedula }}
+                            </div>
+                            <div class="col-md-4">
+                                <p class="card-text"><strong>N° Celular:</strong></p>{{ object.cellphone }}
+                            </div>
+                            <div class="col-md-4">
+                                <p class="card-text"><strong>E-mail:</strong></p>{{ object.email }}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p class="card-text"><strong>E-mail Personal:</strong></p>
+                                {% if object.email_person == None %}
+                                    Sin Registro
+                                {% else %}
+                                    {{ object.email_person }}
+                                {% endif %}
+                            </div>
+                            <div class="col-md-4">
+                                <p class="card-text"><strong>Fecha de Nacimiento:</strong></p>
+                                {% if object.date_birth == None %}
+                                    Sin Registro
+                                {% else %}
+                                    {{ object.date_birth}}
+                                {% endif %}
+                            </div>
+                            <div class="col-md-4">
+                                <p class="card-text"><strong>Dirección:</strong></p>
+                                {% if object.address_user == None %}
+                                    Sin Registro
+                                {% else %}
+                                    {{ object.address_user }}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p class="card-text"><strong>Fecha de Creación:</strong></p>{{ object.date_joined | date:'Y-m-d' }}
+                            </div>
+                            <div class="col-md-4">
+                                <p class="card-text"><strong>Ultima Sesión:</strong></p>
+                                {% if object.last_login == None %}
+                                    Sin Registro de Ingreso
+                                {% else %}
+                                    {{ object.last_login | date:'Y-m-d H:m'}}
+                                {% endif %}
+                            </div>
+                            <div class="col-md-4">
+                                <a href="{% url 'user:user_password_update' object.id %}" class="btn btn-rose btn-round">Resetear Contraseña</a>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card card-profile">
+            <div class="card-avatar">
+                <a href="#">
+                    {% if user.photo %}
+                        <img class="img" src="{{ user.photo.url }}" alt="bpmpro_user"/>
+                    {% else %}
+                        <img class="img" src="{% static 'lib/materialkitpro/img/default-avatar.png' %}" alt="bpmpro_user"/>
+                    {% endif %}
+                </a>
+            </div>
+            <div class="card-content">
+                <h6 class="category text-gray">{{ object.cargo }}</h6>
+                <h4 class="card-title">{{ object.get_full_name }}</h4>
+                <h4 class="card-title text-success" style="font-weight: bold">{% if object.is_active == True %} Activo {% endif %}</h4>
+                <h4 class="card-title text-danger" style="font-weight: bold">{% if object.is_active == False %} Inactivo {% endif %}</h4>
+                <a href="{% url 'user:user_update' object.id %}" class="btn btn-rose btn-round">Editar</a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $('.btnTest').on('click', function () {
+                $.ajax({
+                    url: window.location.pathname,
+                    type: 'POST',
+                    data: {id: 1},
+                    dataType: 'json'
+                }).done(function (data) {
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    alert(textStatus + ': ' + errorThrown);
+                }).always(function (data) {
+                });
+            });
+        });
+
+    </script>
+{% endblock %}
