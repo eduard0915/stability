@@ -20,8 +20,8 @@ from django.urls import path, include
 from config import settings as setting, settings
 from core.home.views import HomeView
 
-
 urlpatterns = [
+    path('', IndexView.as_view(), name='index'),
     path('admin/', admin.site.urls),
     path("", HomeView.as_view(), name='home'),
     path('user/', include('core.user.urls')),
