@@ -1,0 +1,31 @@
+{% extends 'list.html' %}
+{% load static %}
+
+{% block head_list %}
+    <script src="{% static 'product/list_product.js' %}"></script>
+{% endblock %}
+
+{% block new_create %}
+    <a href="{% url 'products:product_create' %}" class="btn btn-primary"><i class="nc-icon nc-simple-add"></i> Nuevo</a>
+{% endblock %}
+
+{% block columns %}
+    <tr>
+        <th class="text-md-center" style="width:12%">Código</th>
+        <th class="text-md-center" style="width:32%">Descripción</th>
+        <th class="text-md-center" style="width:16%">Marca</th>
+        <th class="text-md-center" style="width:18%">Reg. Sanitario</th>
+        <th class="text-md-center" style="width:11%">Estado</th>
+        <th class="disabled-sorting text-right" style="width:11%">Acciones</th>
+    </tr>
+{% endblock %}
+
+
+{% block rows %}
+
+{% endblock %}
+
+
+{% block javascript %}
+
+{% endblock %}

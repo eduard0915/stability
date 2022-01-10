@@ -47,6 +47,8 @@
             {% url 'user:user_create' as user_create %}
             {% url 'company:company_create' as company_create %}
             {% url 'company:company_list' as company_list %}
+            {% url 'products:product_create' as product_create %}
+            {% url 'products:product_list' as product_list %}
 
             <li class="{% if inicio in request.path %} active {% endif %}">
                 <a href="{% url 'inicio:inicio' %}">
@@ -54,6 +56,26 @@
                     <p>Inicio</p>
                 </a>
             </li>
+
+            <li class="{% if produc_list in request.path or product_create in request.path %} active {% endif %}">
+                <a data-toggle="collapse" href="#users" aria-expanded="true">
+                    <i class="material-icons">manage_accounts</i>
+                    <p>Productos
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="{% if product_list in request.path or product_create in request.path %} collapse in {% else %} collapse {% endif %}" id="users">
+                    <ul class="nav">
+                        <li class="{% if product_list in request.path %} active {% endif %}">
+                            <a href="{% url 'products:product_list' %}">Lista de Productos</a>
+                        </li>
+                        <li class="{% if product_create in request.path %} active {% endif %}">
+                            <a href="{% url 'products:product_create' %}">Crear Producto</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
             <li class="{% if user_list in request.path or user_create in request.path %} active {% endif %}">
                 <a data-toggle="collapse" href="#users" aria-expanded="true">
                     <i class="material-icons">manage_accounts</i>
