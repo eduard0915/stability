@@ -1,10 +1,271 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'body.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-tabs" data-background-color="rose">
+                <div class="nav-tabs-navigation">
+                    <div class="nav-tabs-wrapper">
+                        <span class="nav-tabs-title">
+                            {{ object.code_product }} {{ object.description_product }} {{ object.pharma_form }}
+                            - {{ object.brand_product }}, {{ object.presentation_prod }}, {{ object.sanitary_license }}
+                        </span>
+                        <ul class="nav nav-tabs" data-tabs="tabs">
+                            <li class="active">
+                                <a href="#profile" data-toggle="tab">
+                                    <i class="material-icons">list</i> Especificaciones de Calidad
+                                    <div class="ripple-container"></div>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#messages" data-toggle="tab">
+                                    <i class="material-icons">task</i> Estudios Realizados
+                                    <div class="ripple-container"></div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="profile">
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="optionsCheckboxes" checked>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>Sign contract for "What are conference organizers afraid of?"</td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="Edit Task"
+                                            class="btn btn-primary btn-simple btn-xs">
+                                        <i class="material-icons">edit</i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="Remove"
+                                            class="btn btn-danger btn-simple btn-xs">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="optionsCheckboxes">
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="Edit Task"
+                                            class="btn btn-primary btn-simple btn-xs">
+                                        <i class="material-icons">edit</i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="Remove"
+                                            class="btn btn-danger btn-simple btn-xs">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="optionsCheckboxes">
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>Flooded: One year later, assessing what was lost and what was found when a ravaging
+                                    rain swept through metro Detroit
+                                </td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="Edit Task"
+                                            class="btn btn-primary btn-simple btn-xs">
+                                        <i class="material-icons">edit</i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="Remove"
+                                            class="btn btn-danger btn-simple btn-xs">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="optionsCheckboxes" checked>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>Create 4 Invisible User Experiences you Never Knew About</td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="Edit Task"
+                                            class="btn btn-primary btn-simple btn-xs">
+                                        <i class="material-icons">edit</i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="Remove"
+                                            class="btn btn-danger btn-simple btn-xs">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="messages">
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="optionsCheckboxes" checked>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>Flooded: One year later, assessing what was lost and what was found when a ravaging
+                                    rain swept through metro Detroit
+                                </td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="Edit Task"
+                                            class="btn btn-primary btn-simple btn-xs">
+                                        <i class="material-icons">edit</i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="Remove"
+                                            class="btn btn-danger btn-simple btn-xs">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="optionsCheckboxes">
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>Sign contract for "What are conference organizers afraid of?"</td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="Edit Task"
+                                            class="btn btn-primary btn-simple btn-xs">
+                                        <i class="material-icons">edit</i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="Remove"
+                                            class="btn btn-danger btn-simple btn-xs">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="settings">
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="optionsCheckboxes">
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="Edit Task"
+                                            class="btn btn-primary btn-simple btn-xs">
+                                        <i class="material-icons">edit</i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="Remove"
+                                            class="btn btn-danger btn-simple btn-xs">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="optionsCheckboxes" checked>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>Flooded: One year later, assessing what was lost and what was found when a ravaging
+                                    rain swept through metro Detroit
+                                </td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="Edit Task"
+                                            class="btn btn-primary btn-simple btn-xs">
+                                        <i class="material-icons">edit</i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="Remove"
+                                            class="btn btn-danger btn-simple btn-xs">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="optionsCheckboxes">
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>Sign contract for "What are conference organizers afraid of?"</td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="Edit Task"
+                                            class="btn btn-primary btn-simple btn-xs">
+                                        <i class="material-icons">edit</i>
+                                    </button>
+                                    <button type="button" rel="tooltip" title="Remove"
+                                            class="btn btn-danger btn-simple btn-xs">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $('form').on('submit', function (e) {
+            e.preventDefault();
+            var parameters = new FormData(this);
+            $.ajax({
+                url: window.location.pathname,
+                type: 'POST',
+                data: parameters,
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+            }).done(function (data) {
+                console.log(data);
+                if (!data.hasOwnProperty('error')) {
+                    location.href = '{{ list_url }}';
+                    return false;
+                }
+                message_error(data.error);
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                alert(textStatus + ': ' + errorThrown);
+            }).always(function (data) {
+            });
+        });
+    </script>
+{% endblock %}

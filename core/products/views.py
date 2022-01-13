@@ -142,8 +142,8 @@ class ProductDetailView(LoginRequiredMixin, ValidatePermissionRequiredMixin, Det
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Descripción de Producto'
-        context['entity'] = 'Descripción de Producto'
+        context['title'] = 'Detalle Producto'
+        context['entity'] = 'Detalle Producto'
         # context['stdbatch'] = StandardBatch.objects.filter(product_id=context['object'].id)
         # context['stdbatch_count'] = ProductFormulation.objects.filter(product_id=context['object'].id, std_batch=None).count()
         # context['formprod_count'] = ProductFormulation.objects.filter(product_id=context['object'].id).count()

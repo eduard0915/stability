@@ -27,7 +27,7 @@ urlpatterns = [
     path('inicio/', include('core.inicio.urls')),
     path('login/', include('core.login.urls')),
     path('company/', include('core.company.urls')),
-    path('product/', include('core.products.urls')),
+    path('products/', include('core.products.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if setting.DEBUG:
