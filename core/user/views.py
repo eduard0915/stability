@@ -17,7 +17,7 @@ class UserCreateView(LoginRequiredMixin, CreateView):
     form_class = UserForm
     template_name = 'create.html'
     success_url = reverse_lazy('user:user_list')
-    #permission_required = 'user.add_user'
+    permission_required = 'user.add_user'
     url_redirect = success_url
 
     @method_decorator(csrf_exempt)

@@ -21,13 +21,13 @@ from config import settings as setting, settings
 from core.home.views import HomeView
 
 urlpatterns = [
-    path('', IndexView.as_view(), name='index'),
     path('admin/', admin.site.urls),
-    path("", HomeView.as_view(), name='home'),
+    path('', HomeView.as_view(), name='home'),
     path('user/', include('core.user.urls')),
     path('inicio/', include('core.inicio.urls')),
     path('login/', include('core.login.urls')),
     path('company/', include('core.company.urls')),
+    path('product/', include('core.products.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if setting.DEBUG:

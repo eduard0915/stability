@@ -1,52 +1,64 @@
 {% load static %}
 
-<div class="sidebar" data-active-color="rose" data-background-color="black"
-     data-image="{% static 'lib/materialkitpro/img/sidebar-1.jpg' %}">
-    <!--
-        Tip 1: You can change the color of active element of the sidebar using: data-active-color="purple | blue | green | orange | red | rose"
-        Tip 2: you can also add an image using data-image tag
-        Tip 3: you can change the color of the sidebar with data-background-color="white | black" -->
-    <div class="logo">
-        <img src="{% static 'lib/materialkitpro/img/logo_bpm_pro_white.png' %}" style="max-width: 90%;max-height: 90%;width:auto;height:auto" alt="bpm_pro"/>
-    </div>
-    <div class="logo logo-mini">
-        <a href="http://www.bpmpro.co">
-            <img src="{% static 'lib/materialkitpro/img/favicon.png' %}" style="max-width: 80%;max-height: 80%;width:auto;height:auto" alt="bpm_pro"/>
-        </a>
-    </div>
-    <div class="sidebar-wrapper">
-        <div class="user">
-            <div class="photo">
-                {% if request.user.photo %}
-                    <img src="{{ request.user.photo.url }}" alt="logo"/>
-                 {% else %}
-                    <img src="{% static 'lib/materialkitpro/img/default-avatar.png' %}" alt="logo"/>
-                {% endif %}
-            </div>
-            <div class="info">
-                <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-                    {{ request.user.get_full_name }}
-                    <b class="caret"></b>
-                </a>
-                <div class="collapse" id="collapseExample">
-                    <ul class="nav">
-                        <li>
-                            <a href="{% url 'user:user_profile' request.user.id %}">Mi Perfil - {{ request.user.username }}</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'logout' %}">Cerrar Sesión</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
 
+    <div class="sidebar" data-color-active="rose" data-background-color="black" data-image="lib/material-dashboard-pro-html-v2.2.2/assets/img/sidebar-1.jpg">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-mini">
+          <img src="{% static 'lib/material-dashboard-pro-html-v2.2.2/assets/img/favicon.png' %}" style="max-width: 80%;max-height: 80%;width:auto;height:auto" alt="bpm_pro"/>
+      </a>
+        <a href="https://www.bpmpro.co" class="simple-text logo-normal">
+          <img src="{% static 'lib/material-dashboard-pro-html-v2.2.2/assets/img/logo_bpm_pro_white.png' %}" style="max-width: 90%;max-height: 90%;width:auto;height:auto" alt="bpm_pro"/>
+        </a></div>
+      <div class="sidebar-wrapper">
+        <div class="user">
+          <div class="photo">
+              {% if request.user.photo %}
+                  <img src="{{ request.user.photo.url }}" alt="logo"/>
+              {% else %}
+                  <img src="{% static 'lib/material-dashboard-pro-html-v2.2.2/assets/img/default-avatar.png' %}" alt="logo"/>
+              {% endif %}
+          </div>
+          <div class="user-info">
+            <a data-toggle="collapse" href="#collapseExample" class="username">
+              <span>
+                {{ request.user.get_full_name }}
+                <b class="caret"></b>
+              </span>
+            </a>
+            <div class="collapse" id="collapseExample">
+              <ul class="nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span class="sidebar-mini"> MP </span>
+                    <span class="sidebar-normal">
+                        <a href="{% url 'user:user_profile' request.user.id %}">Mi Perfil - {{ request.user.username }}</a>
+                    </span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span class="sidebar-mini"> CS </span>
+                    <span class="sidebar-normal">
+                        <a href="{% url 'logout' %}">Cerrar Sesión</a>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <ul class="nav">
             {% url 'inicio:inicio' as inicio %}
             {% url 'user:user_list' as user_list %}
             {% url 'user:user_create' as user_create %}
             {% url 'company:company_create' as company_create %}
             {% url 'company:company_list' as company_list %}
+            {% url 'products:product_create' as product_create %}
+            {% url 'products:product_list' as product_list %}
 
             <li class="{% if inicio in request.path %} active {% endif %}">
                 <a href="{% url 'inicio:inicio' %}">
@@ -54,6 +66,26 @@
                     <p>Inicio</p>
                 </a>
             </li>
+
+            <li class="{% if produc_list in request.path or product_create in request.path %} active {% endif %}">
+                <a data-toggle="collapse" href="#users" aria-expanded="true">
+                    <i class="material-icons">inventory_2</i>
+                    <p>Productos
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="{% if product_list in request.path or product_create in request.path %} collapse in {% else %} collapse {% endif %}" id="users">
+                    <ul class="nav">
+                        <li class="{% if product_list in request.path %} active {% endif %}">
+                            <a href="{% url 'products:product_list' %}">Lista de Productos</a>
+                        </li>
+                        <li class="{% if product_create in request.path %} active {% endif %}">
+                            <a href="{% url 'products:product_create' %}">Crear Producto</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
             <li class="{% if user_list in request.path or user_create in request.path %} active {% endif %}">
                 <a data-toggle="collapse" href="#users" aria-expanded="true">
                     <i class="material-icons">manage_accounts</i>
@@ -95,6 +127,8 @@
                     </ul>
                 </div>
             </li>
+
         </ul>
+      </div>
+      <div class="sidebar-background"></div>
     </div>
-</div>

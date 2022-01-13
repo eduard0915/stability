@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'core.login',
     'core.home',
     'core.company',
+    'core.products',
     # Libs
     'widget_tweaks',
 ]
@@ -66,7 +67,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'config/../templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
