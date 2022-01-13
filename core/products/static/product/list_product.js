@@ -30,8 +30,8 @@ $(function ()  {
                 orderable: false,
                 render: function (data, type, row) {
                     let product
-                    product = '<a href="/products/update/'+row.id+'/" type="button" rel="tooltip" class="btn btn-warning btn-link btn-icon btn-sm edit"><i class="fa fa-edit"></i></a>&nbsp';
-                    product +='<a href="/products/detail/'+row.id+'/" type="button" rel="tooltip" class="btn btn-success btn-link btn-icon btn-sm edit"><i class="nc-icon nc-book-bookmark"></i></a>';
+                    product = '<a href="/products/update/'+row.id+'/" type="button" rel="tooltip" class="btn btn-warning btn-xs btn-just-icon btn-simple"><i class="material-icons">edit</i</a>&nbsp';
+                    product +='<a href="/products/detail/'+row.id+'/" type="button" rel="tooltip" class="btn btn-success btn-xs btn-just-icon btn-simple"><i class="material-icons">info</i</a></a>';
                     return product
                 }
             },

@@ -9,6 +9,12 @@
     <a href="{% url 'products:product_create' %}" class="btn btn-primary"><i class="nc-icon nc-simple-add"></i> Nuevo</a>
 {% endblock %}
 
+{% block card_header %}
+    <div class="card-header card-header-icon" data-background-color="rose">
+        <i class="material-icons">inventory_2</i>
+    </div>
+{% endblock %}
+
 {% block columns %}
     <tr>
         <th class="text-md-center" style="width:12%">Código</th>
