@@ -6,20 +6,23 @@
 {% endblock %}
 
 {% block card_header %}
-    <div class="card-header card-header-icon" data-background-color="rose">
-        <i class="material-icons">people_alt</i>
+    <div class="card-header card-header-rose card-header-icon">
+        <div class="card-icon">
+            <i class="material-icons">people_alt</i>
+        </div>
+        <h4 class="card-title" style="font-weight: bold">{{ entity }}</h4>
     </div>
 {% endblock %}
 
 {% block columns %}
-    <th class="text-md-center" style="width:5%; font-weight: 600"></th>
-    <th class="text-md-center" style="width:22%; font-weight: 600">Nombre Completo</th>
-    <th class="text-md-center" style="width:10%; font-weight: 600">Usuario</th>
-    <th class="text-md-center" style="width:16%; font-weight: 600">Cargo</th>
-    <th class="text-md-center" style="width:10%; font-weight: 600">Roles</th>
-    <th class="text-md-center" style="width:20%; font-weight: 600">Email</th>
-    <th class="text-md-center" style="width:9%; font-weight: 600">Estado</th>
-    <th class="text-md-center" style="width:7%; font-weight: 600">Editar</th>
+    <th class="text-md-center" style="width:5%"></th>
+    <th class="text-md-center" style="width:22%">Nombre Completo</th>
+    <th class="text-md-center" style="width:10%">Usuario</th>
+    <th class="text-md-center" style="width:16%">Cargo</th>
+    <th class="text-md-center" style="width:10%">Roles</th>
+    <th class="text-md-center" style="width:20%">Email</th>
+    <th class="text-md-center" style="width:9%">Estado</th>
+    <th class="text-md-center" style="width:7%">Editar</th>
 {% endblock %}
 
 {% block rows %}
