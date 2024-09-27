@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 
 from config import settings
 
+
 # Login para iniciar sesion
 class LoginFormView(LoginView):
     template_name = 'login.html'
@@ -18,6 +19,7 @@ class LoginFormView(LoginView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Iniciar sesión'
         return context
+
 
 class FormResetPasswordView(PasswordResetView):
     template_name = 'reset_password_form.html'

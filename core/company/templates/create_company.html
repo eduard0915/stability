@@ -1,9 +1,10 @@
 {% extends 'form.html' %}
 
 {% block card_header %}
-    <div class="card-header card-header-icon" data-background-color="rose">
-        {% if action == 'add' or action == 'edit' %}
-            <i class="material-icons">store</i>
-        {% endif %}
+    <div class="card-header card-header-rose card-header-icon">
+        <div class="card-icon">
+            <i class="material-icons">settings</i>
+        </div>
+        <h4 class="card-title" style="font-weight: bold">{{ entity }}</h4>
     </div>
 {% endblock %}

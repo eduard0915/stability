@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="{% static 'lib/materialkitpro/img/apple-icon.png' %}"/>
-    <link rel="icon" type="image/png" href="{% static 'lib/materialkitpro/img/favicon.png' %}"/>
+    <link rel="icon" type="image/png" href="{% static 'lib/materialkitpro/img/../static/lib/material-dashboard-pro-html-v2.2.2/assets/img/favicon.png' %}"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>{{ title }}</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
@@ -37,26 +37,30 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-{#                    <li>#}
-{#                        <a href="../dashboard.html">#}
-{#                            <i class="material-icons">dashboard</i> Dashboard#}
-{#                        </a>#}
-{#                    </li>#}
-{#                    <li class="">#}
-{#                        <a href="register.html">#}
-{#                            <i class="material-icons">person_add</i> Register#}
-{#                        </a>#}
-{#                    </li>#}
-{#                    <li class="">#}
-{#                        <a href="login.html">#}
-{#                            <i class="material-icons">fingerprint</i> Login#}
-{#                        </a>#}
-{#                    </li>#}
-{#                    <li class=" active ">#}
-{#                        <a href="lock.html">#}
-{#                            <i class="material-icons">lock_open</i> Lock#}
-{#                        </a>#}
-{#                    </li>#}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">
+                            <h5><i class="material-icons">login</i> INICIAR SESION </h5>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" title="" data-placement="bottom" href="https://twitter.com/CreativeTim"
+                           target="_blank" data-original-title="Follow us on Twitter" rel="nofollow">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" title="" data-placement="bottom" href="https://www.facebook.com/CreativeTim"
+                           target="_blank" data-original-title="Like us on Facebook" rel="nofollow">
+                            <i class="fa fa-facebook-square"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" title="" data-placement="bottom"
+                           href="https://www.instagram.com/CreativeTimOfficial" target="_blank"
+                           data-original-title="Follow us on Instagram" rel="nofollow">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -31,7 +31,7 @@ $(function ()  {
                 orderable: false,
                 className: 'td-actions text-center',
                 render: function (data, type, row) {
-                    return  '<a href="/company/update/' + row.id + '/" type="button" rel="tooltip" class="btn btn-warning btn-xs btn-just-icon btn-simple"><i class="material-icons">edit</i</a></a>';
+                    return  '<a href="/company/update/' + row.id + '/" type="button" rel="tooltip" class="btn btn-warning btn-round"><i class="material-icons">edit</i></a></a>';
                 }
             },
             {

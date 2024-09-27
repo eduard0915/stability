@@ -29,7 +29,11 @@ class UserForm(ModelForm):
             'cellphone': TextInput(attrs={'class': 'form-control'}),
             'cedula': TextInput(attrs={'class': 'form-control'}),
             'username': TextInput(attrs={'class': 'form-control'}),
-            'groups': SelectMultiple(attrs={'class': 'form-control', 'required': True})
+            'groups': SelectMultiple(attrs={
+                'class': 'form-control selectpicker',
+                'data-style': 'btn btn-link',
+                'required': True
+            })
         }
         exclude = ['user_permissions', 'last_login', 'date_joined', 'is_superuser', 'is_staff', 'is_active']
         help_texts = {

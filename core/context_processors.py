@@ -8,7 +8,7 @@ def extras(request):
     context = {}
     # context['count_total'] = 0
     if request.user.is_authenticated:
-        context['company'] = Company.objects.get(id=1)
+        # context['company'] = Company.objects.get(id=1)
         context['company_logo'] = logo()
     return context
 

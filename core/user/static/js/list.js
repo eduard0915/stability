@@ -32,7 +32,7 @@ $(function ()  {
                 orderable: false,
                 render: function (data, type, row) {
                     let edition
-                    edition = '<a href="/user/update-password/'+row.id+'/" type="button" rel="tooltip" class="btn btn-info btn-xs btn-just-icon btn-simple"><i class="material-icons">lock</i</a>';
+                    edition = '<a href="/user/update-password/'+row.id+'/" type="button" rel="tooltip" class="btn btn-warning btn-round"><i class="material-icons">lock</i></a>';
                     return edition;
                 }
             },
@@ -42,7 +42,7 @@ $(function ()  {
                 orderable: false,
                 render: function (data, type, row) {
                     let edition
-                    edition = '<a href="/user/detail/'+row.id+'/" type="button" rel="tooltip" class="btn btn-info btn-xs btn-just-icon btn-simple"><i class="material-icons">loupe</i</a>';
+                    edition = '<a href="/user/detail/'+row.id+'/" type="button" rel="tooltip" class="btn btn-info btn-round"><i class="material-icons">info_outline</i></a>';
                     return edition;
                 }
             },
