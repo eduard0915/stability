@@ -8,7 +8,7 @@ def extras(request):
     context = {}
     # context['count_total'] = 0
     if request.user.is_authenticated:
-        context['company'] = Company.objects.get(id=1)
+        context['company_detail'] = company()
         context['company_logo'] = logo()
     return context
 
@@ -17,3 +17,10 @@ def logo():
         return Company.objects.get(id=1).get_logo()
     except ObjectDoesNotExist:
         return '{}{}'.format(STATIC_URL, 'img/empty.png')
+
+def company():
+    try:
+        company_detail = Company.objects.get(id=1)
+        return company_detail
+    except ObjectDoesNotExist:
+        return False

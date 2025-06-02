@@ -42,14 +42,14 @@
         </div>
 
         <ul class="nav">
-            {% url 'inicio:inicio' as inicio %}
+            {% url 'start:start' as inicio %}
             {% url 'user:user_list' as user_list %}
             {% url 'user:user_create' as user_create %}
             {% url 'company:company_create' as company_create %}
             {% url 'company:company_list' as company_list %}
 
             <li class="{% if inicio in request.path %} active {% endif %}">
-                <a href="{% url 'inicio:inicio' %}">
+                <a href="{% url 'start:start' %}">
                     <i class="material-icons">home</i>
                     <p>Inicio</p>
                 </a>

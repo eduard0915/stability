@@ -170,7 +170,7 @@ class MyProfileDetailView(LoginRequiredMixin, DetailView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Mi Perfil'
         context['entity'] = 'Mi Perfil'
-        context['list_url'] = reverse_lazy('inicio:inicio')
+        context['list_url'] = reverse_lazy('start:start')
         return context
 
 # Edicion de perfil por usuario logueado
@@ -178,7 +178,7 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = ProfileUpdateForm
     template_name = 'create.html'
-    success_url = reverse_lazy('inicio:inicio')
+    success_url = reverse_lazy('start:start')
     # permission_required = 'user.change_user'
     url_redirect = success_url
 

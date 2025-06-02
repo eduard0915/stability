@@ -15,7 +15,7 @@ class ValidatePermissionRequiredMixin(object):
 
     def get_url_redirect(self):
         if self.url_redirect is None:
-            return reverse_lazy('inicio:notperms')
+            return reverse_lazy('start:not_perms')
         return self.url_redirect
 
     def dispatch(self, request, *args, **kwargs):
