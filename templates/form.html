@@ -11,12 +11,12 @@
 
 {% block content %}
 
-    <div class="col-md-12">
+    <div class="col-md-{{ div }}">
         <div class="card">
             <form enctype="multipart/form-data" class="form-horizontal" action="" method="post">
-                {% block card_header %}
-
-                {% endblock %}
+                <div class="card-header card-header-icon" data-background-color="rose">
+                    <i class="material-icons">{{ icon }}</i>
+                </div>
                 <div class="card-content">
                     {% csrf_token %}
                     <h4 class="card-title" style="font-weight: bold">{{ entity }}</h4>

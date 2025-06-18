@@ -48,10 +48,11 @@ class CompanyCreateView(LoginRequiredMixin, ValidatePermissionRequiredMixin, Cre
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Perfil Compañia'
-        context['entity'] = 'Perfil Compañia'
+        context['title'] = 'Perfil Empresa'
+        context['entity'] = 'Perfil Empresa'
         context['action'] = 'add'
         context['list_url'] = reverse_lazy('company:company_list')
+        context['icon'] = 'factory'
         return context
 
 

@@ -1,0 +1,35 @@
+{% extends 'list.html' %}
+{% load static %}
+
+{% block head_list %}
+    <script src="{% static 'list_condition.js' %}"></script>
+{% endblock %}
+
+{% block card_header %}
+    <div class="card-header card-header-icon" data-background-color="rose">
+        <i class="material-icons">thermostat</i>
+    </div>
+{% endblock %}
+
+{% block button_add %}
+    <a href="{{ create_url }}" class="btn btn-info btn-fill">
+        <i class="material-icons">add</i>
+        Nuevo
+    </a>
+{% endblock %}
+
+{% block columns %}
+    <th class="text-md-center" style="width:20%; font-weight: 600">Zona</th>
+    <th class="text-md-center" style="width:33%; font-weight: 600">Rango de Temperatura</th>
+    <th class="text-md-center" style="width:33%; font-weight: 600">Rango de Humedad</th>
+    <th class="text-md-center" style="width:14%; font-weight: 600">Acciones</th>
+{% endblock %}
+
+{% block rows %}
+
+{% endblock %}
+
+{% block javascript %}
+
+
+{% endblock %}

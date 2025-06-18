@@ -1,3 +1,5 @@
+import uuid
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 # from django.forms import model_to_dict
@@ -6,6 +8,7 @@ from config.settings import MEDIA_URL, STATIC_URL
 
 
 class User(AbstractUser):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True, editable=False)
     cedula = models.CharField(max_length=15, null=True, blank=True, unique=False, verbose_name='Cédula')
     cargo = models.CharField(max_length=50, null=True, blank=True, verbose_name='Cargo')
     email_person = models.EmailField(null=True, blank=True, verbose_name='Email Personal')

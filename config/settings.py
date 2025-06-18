@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'core.login',
     'core.home',
     'core.company',
+    'core.condition',
     # Libs
     'widget_tweaks',
 ]

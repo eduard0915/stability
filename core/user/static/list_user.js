@@ -71,7 +71,7 @@ $(function ()  {
                 className: 'td-actions text-center',
                 render: function (data, type, row) {
                     var estado = null
-                    switch (row.is_active) {
+                    switch (row['is_active']) {
                         case true:
                             estado = 'Activo'
                             break;

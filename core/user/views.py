@@ -48,7 +48,9 @@ class UserCreateView(LoginRequiredMixin, CreateView):
         context['title'] = 'Creación de Usuarios'
         context['list_url'] = reverse_lazy('user:user_list')
         context['action'] = 'add'
+        context['div'] = '8'
         context['entity'] = 'Creación Usuario'
+        context['icon'] = 'person_add'
         return context
 
 # Listado de usuarios
@@ -93,6 +95,7 @@ class UserListView(LoginRequiredMixin, ListView):
         context['create_url'] = reverse_lazy('user:user_create')
         context['list_url'] = reverse_lazy('user:user_list')
         context['entity'] = 'Usuarios'
+        context['div'] = '12'
         return context
 
 # Edicion de usuario por Administrador
@@ -135,6 +138,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         context['entity'] = 'Editar Usuario'
         context['action'] = 'edit'
         context['users'] = User.objects.all()
+        context['icon'] = 'person_add'
         return context
 
 # Detalle de Usuario

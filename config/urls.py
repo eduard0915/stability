@@ -13,6 +13,7 @@ urlpatterns = [
     path('start/', include('core.start.urls')),
     path('login/', include('core.login.urls')),
     path('company/', include('core.company.urls')),
+    path('condition/', include('core.condition.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if setting.DEBUG:
