@@ -43,12 +43,12 @@ class ConditionCreateView(LoginRequiredMixin, ValidatePermissionRequiredMixin, C
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Creación de Condicion Ambiental'
+        context['title'] = 'Creación de Condición Ambiental'
         context['list_url'] = self.success_url
         context['action'] = 'add'
         context['div'] = '6'
         context['icon'] = 'thermostat'
-        context['entity'] = 'Creación de Condicion Ambiental'
+        context['entity'] = 'Creación de Condición Ambiental'
         return context
 
 
@@ -56,7 +56,7 @@ class ConditionCreateView(LoginRequiredMixin, ValidatePermissionRequiredMixin, C
 class ConditionListView(LoginRequiredMixin, ValidatePermissionRequiredMixin, ListView):
     model = Condition
     template_name = 'list_condition.html'
-    permission_required = 'materials.view_suppliermaterial'
+    permission_required = 'condition.add_condition'
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
@@ -69,7 +69,7 @@ class ConditionListView(LoginRequiredMixin, ValidatePermissionRequiredMixin, Lis
             if action == 'searchdata':
                 data = []
                 material = list(Condition.objects.values(
-                    'id', 'zone', 'temperature_inf', 'temperature_sup', 'humidity_inf', 'humidity_sup'
+                    'id', 'zone', 'temperature_inf', 'temperature_sup', 'humidity_inf', 'humidity_sup', 'condition_name'
                 ).order_by('zone'))
                 return JsonResponse(material, safe=False)
             else:
@@ -83,7 +83,7 @@ class ConditionListView(LoginRequiredMixin, ValidatePermissionRequiredMixin, Lis
         context['title'] = 'Condiciones Ambientales para Estudios'
         context['create_url'] = reverse_lazy('condition:create_condition')
         context['entity'] = 'Condiciones Ambientales para Estudios de Estabilidad'
-        context['div'] = '6'
+        context['div'] = '8'
         return context
 
 
@@ -92,8 +92,8 @@ class ConditionUpdateView(LoginRequiredMixin, ValidatePermissionRequiredMixin, U
     model = Condition
     form_class = ConditionForm
     template_name = 'create_condition.html'
-    success_url = reverse_lazy('materials:supplier_list')
-    permission_required = 'materials.change_suppliermaterial'
+    success_url = reverse_lazy('condition:list_condition')
+    permission_required = 'condition.add_condition'
     url_redirect = success_url
 
     @method_decorator(csrf_exempt)
@@ -120,9 +120,9 @@ class ConditionUpdateView(LoginRequiredMixin, ValidatePermissionRequiredMixin, U
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Actualización de Condicion Ambiental'
+        context['title'] = 'Actualización de Condición Ambiental'
         context['list_url'] = self.success_url
-        context['entity'] = 'Actualización de Condicion Ambiental'
+        context['entity'] = 'Actualización de Condición Ambiental'
         context['action'] = 'edit'
         context['icon'] = 'thermostat'
         context['div'] = '6'

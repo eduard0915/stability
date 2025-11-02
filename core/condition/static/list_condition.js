@@ -17,36 +17,37 @@ $(function ()  {
         },
         columns: [
             {'data': 'zone'},
+            {'data': 'condition_name'},
             {'data': 'temperature_inf'},
             {'data': 'humidity_inf'},
             {'data': 'id'},
         ],
         columnDefs: [
             {
-                targets: [0],
+                targets: [0, 1],
                 class: 'td-actions text-center'
             },
             {
-                 targets: [1],
+                 targets: [2],
                  className: 'td-actions text-center',
                  render: function (data, type, row) {
                      return row['temperature_inf'] + ' - ' +row['temperature_sup'] + ' °C';
                  }
              },
             {
-                 targets: [2],
+                 targets: [3],
                  className: 'td-actions text-center',
                  render: function (data, type, row) {
                      return row['humidity_inf'] + ' - ' +row['humidity_sup'] + ' %';
                  }
              },
             {
-                targets: [3],
+                targets: [4],
                 class: 'td-actions text-center',
                 orderable: false,
                 render: function (data, type, row) {
                     let edition
-                    edition = '<a href="/update/' + row.id + '/" type="button" rel="tooltip" class="btn btn-info btn-xs btn-just-icon btn-simple"><i class="material-icons">edit</i</a>';
+                    edition = '<a href="/condition/update/' + row.id + '/" type="button" rel="tooltip" class="btn btn-info btn-xs btn-just-icon btn-simple"><i class="material-icons">edit</i</a>';
                     return edition;
                 }
             },

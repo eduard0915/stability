@@ -10,10 +10,11 @@ from core.models import BaseModel
 class Condition(BaseModel):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True, editable=False)
     zone = models.CharField(max_length=15, verbose_name='Zona')
-    temperature_inf = models.PositiveSmallIntegerField(verbose_name='Temperatura Inferior')
-    temperature_sup = models.PositiveSmallIntegerField(verbose_name='Temperatura Superior')
-    humidity_inf = models.PositiveSmallIntegerField(verbose_name='Húmedad Inferior', null=True, blank=True)
-    humidity_sup = models.PositiveSmallIntegerField(verbose_name='Húmedad Superior', null=True, blank=True)
+    condition_name = models.CharField(max_length=100, verbose_name='Clima')
+    temperature_inf = models.PositiveSmallIntegerField(verbose_name='Temp. Inferior °C')
+    temperature_sup = models.PositiveSmallIntegerField(verbose_name='Temp. Superior °C')
+    humidity_inf = models.PositiveSmallIntegerField(verbose_name='% Húmedad Inferior', null=True, blank=True)
+    humidity_sup = models.PositiveSmallIntegerField(verbose_name='% Húmedad Superior', null=True, blank=True)
     enable = models.BooleanField(verbose_name='', default=True)
 
     def __str__(self):
